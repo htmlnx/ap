@@ -1,0 +1,189 @@
+Topic: Fragment to Fragment communication.
+
+Steps to add fragments:
+•	App-> new -> fragment-> blank fragment
+•	Uncheck factory methods -> interface callback->language-java->target-main.
+•	Create one more fragment using same steps.
+
+// Activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context=".MainActivity">
+
+<FrameLayout
+android:id="@+id/fragmentcontainer"
+android:layout_width="370dp"
+android:layout_height="490dp"
+tools:layout_editor_absoluteX="8dp"
+tools:layout_editor_absoluteY="8dp" />
+</LinearLayout>
+
+// Fragment1.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context=".Fragmen1">
+<Button
+android:id="@+id/btnsend"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Send Message" />
+android:id="@+id/txtmsg"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:ems="10"
+android:inputType="textPersonName"
+android hint "enter your message here" />
+</LinearLayout>
+
+// Fragment2.xml
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools.context=".Fragment2">
+
+<TextView
+android:id="@+id/txtmsg1"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:hint="This is your message" />
+</FrameLayout>
+
+// Fragment1.java
+package com.example.ftof40;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Bundle;
+import androidx.fragment.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+public class Fragmen1 extends Fragment
+{
+Button btn;
+EditText txt;
+on MessageSendListener messageSendListener;
+public interface on MessageSendListener{
+public void on MessageSend(String msg);
+}
+
+public Fragmen1() {
+// Required empty public constructor
+}
+@Override
+public View onCreateView(LayoutInflater inflater, ViewGroup container,
+Bundle savedInstanceState) {
+// Inflate the layout for this fragment
+View v = inflater.inflate(R.layout.fragment_fragmen1,container, false);
+btn=v.findViewById(R.id.btnsend);
+txt=v.findViewById(R.id.txtmsg);
+btn.setOnClickListener(new View.OnClickListener() {
+
+@Override
+public void onClick(View view) {
+String msg=txt.getText().toString();
+messageSendListener.onMessageSend(msg);
+}
+});
+return v;
+}
+
+@Override
+public void onAttach (Context context) {
+super.onAttach(context);
+Activity a=(Activity) context;
+try
+{
+messageSendListener=(on MessageSendListener) a;
+}
+catch(ClassCastException e)
+{
+throw new ClassCastException(a.toString()+"must implement on message send listener");
+}
+}
+@Override
+public void onResume() {
+super.onResume();
+txt.setText("");
+}
+}
+
+// Fragment2.java
+package com.example.ftof40;
+import android.os.Bundle;
+import androidx.fragment.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+public class Fragment2 extends Fragment {
+TextView txt1;
+public Fragment2() {
+// Required empty public constructor
+}
+
+@Override
+public view onCreateView(LayoutInflater inflater, ViewGroup
+container,
+Bundle savedInstanceState) {
+//Inflate the layout for this fragment
+View v=inflater.inflate(R.layout.fragment fragment2,container,false);
+txt1=v.findViewById(R.id.txtmsg1);
+Bundle b1=getArguments();
+String msg1=b1.getString("message");
+txt1.setText((msg1));
+return v;
+}
+}
+
+// MainAcitivity.java
+package com.example.ftof40;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
+import android.os.Bundle;
+
+public class MainActivity extends AppCompatActivity implements
+Fragmen1.onMessageSendListener
+{
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+if(findViewById(R.id.fragmentcontainer)!=null){
+{
+if(savedInstanceState!=null)
+{
+return;
+}
+Fragmen1 f1=new Fragmen1();
+
+getSupportFragmentManager().beginTransaction().add(R.id.fragmentcontainer,f1,null).commit();
+}
+}
+public void on Message Send(String message){
+Fragment2 f2=new Fragment2();
+Bundle b=new Bundle();
+b.putString("message", message);
+f2.setArguments(b);
+FragmentTransaction
+ft=getSupportFragmentManager().beginTransaction().replace(R.id.fragmentcontainer,f2);
+ft.addToBackStack(null);
+ft.commit();}
