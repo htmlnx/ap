@@ -1,0 +1,575 @@
+Ul components & types of layout
+
+1. Constraint Layout:
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android: layout_orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
+
+<TextView
+android:layout_orientation = "vertical"
+android:id="@+id/no1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="NO.1"
+app:layout_constraint Bottom_toBottom Of="parent"
+app:layout_constraintHorizontal_bias="0.263"
+app:layout_constraint Left_toLeftOf="parent"
+app:layout_constraint Right_toRightOf="parent"
+app:layout_constraintTop_toTopOf="parent"
+app:layout_constraintVertical_bias="0.248" />
+<EditText
+android:id="@+id/editText"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:ems="10"
+android:inputType="textPerson Name"
+android:text="Name"
+tools:layout_editor_absoluteX="160dp"
+tools:layout_editor_absoluteY="163dp" />
+<TextView
+android:id="@+id/textView"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="NO2"
+tools:layout_editor_absoluteX="100dp"
+tools:layout_editor_absoluteY="246dp" />
+<EditText
+android:id="@+id/editText2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:ems="10"
+android:inputType="textPerson Name"
+android:text="Name"
+tools:layout_editor_absoluteX="158dp"
+tools:layout_editor_absoluteY="228dp" />
+<TextView
+android:id="@+id/textView2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="ANS"
+tools:layout_editor_absoluteX="104dp"
+tools:layout_editor_absoluteY="320dp" />
+<EditText
+
+android:id="@+id/editText3" 
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:ems="10"
+android:inputType="textPersonName"
+android:text="Name"
+tools:layout_editor_absoluteX="161dp"
+tools:layout_editor_absoluteY="309dp" />
+<Button
+android:id="@+id/button"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Button"
+tools:layout_editor_absoluteX="111dp"
+tools:layout_editor_absolute Y="449dp" />
+<Button
+android:id="@+id/button2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Button"
+tools:layout_editor_absoluteX="111dp"
+tools:layout_editor_absolute Y="383dp" />
+<Button
+android:id="@+id/button3"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Button"
+tools:layout_editor_absoluteX="226dp"
+tools:layout_editor_absolute Y="383dp" />
+<Button
+android:id="@+id/button4"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Button"
+tools:layout_editor_absoluteX="225dp"
+tools:layout_editor_absoluteY="449dp" />
+<RadioButton
+android:id="@+id/radioButton"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="RadioButton"
+tools:layout_editor_absoluteX="79dp"
+tools:layout_editor_absolute Y="523dp" />
+<RadioButton
+android:id="@+id/radioButton2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="RadioButton"
+tools:layout_editor_absoluteX="225dp"
+tools:layout_editor_absoluteY="523dp" />
+<CheckBox
+android:id="@+id/checkBox"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="CheckBox"
+tools:layout_editor_absoluteX="94dp"
+tools:layout_editor_absoluteY="579dp" />
+
+<CheckBox
+android:id="@+id/checkBox2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="CheckBox"
+tools:layout_editor_absoluteX="226dp"
+tools:layout_editor_absoluteY="579dp" />
+<ToggleButton
+android:id="@+id/toggleButton"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="ToggleButton"
+tools:layout_editor_absoluteX="152dp"
+tools:layout_editor_absoluteY="642dp" />
+
+2.Linear Layout:
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context=".MainActivity">
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal">
+<TextView
+android:id="@+id/no1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="NO.1"
+/>
+<EditText
+android:id="@+id/editText"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:hint="enter no 1" />
+</LinearLayout>
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal">
+<TextView
+android:id="@+id/textView"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="NO2"
+/>
+<EditText
+android:id="@+id/editText2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:hint="enter no 2"
+/>
+</LinearLayout>
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal">
+
+<TextView
+android:id="@+id/textView2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="ANS"/>
+<EditText
+android:id="@+id/editText3"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:hint="see ans here" />
+</LinearLayout>
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal">
+<Button
+android:id="@+id/button"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Add"
+/>
+<Button
+android:id="@+id/button2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Sub"
+/>
+<Button
+android:id="@+id/button3"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Mul"
+/>
+<Button
+android:id="@+id/button4"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Div"
+/>
+</LinearLayout>
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal">
+<RadioButton
+android:id="@+id/radioButton"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Male" />
+<RadioButton
+android:id="@+id/radioButton2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Female" />
+</LinearLayout>
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal">
+<CheckBox
+android:id="@+id/checkBox"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Music"
+/>
+<CheckBox
+android:id="@+id/checkBox2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Sports" />
+</LinearLayout>
+
+<ToggleButton
+android:id="@+id/toggleButton"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Ok" />
+</LinearLayout>
+
+
+3. Table Layout:
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context=".MainActivity">
+
+<TableRow>
+<TextView
+android:id="@+id/no1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="NO.1"
+/>
+<EditText
+android:id="@+id/editText"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:hint="enter no 1" />
+</TableRow>
+<TableRow>
+<TextView
+android:id="@+id/textView"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="NO2"
+/>
+
+<EditText
+android:id="@+id/editText2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android hint-"enter no 2"
+/>
+</TableRow>
+
+<TableRow>
+<TextView
+android:id="@+id/textView2"
+android:layout_width="wrap_content"
+android layout_height="wrap_content"
+android text="ANS"
+/>
+<EditText
+android:id="@+id/editText3"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android hint="see ans here"
+/>
+</TableRow>
+
+<TableRow>
+<Button
+android:id="@+id/button"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Add"
+/>
+<Button
+android:id="@+id/button2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Sub"
+/>
+<Button
+android:id="@+id/button3"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="mul"
+/>
+<Button
+android:id="@+id/button4"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="div"
+/>
+</TableRow>
+
+<TableRow>
+<RadioButton
+android:id="@+id/radioButton"
+android layout_width="wrap_content"
+android layout_height="wrap_content"
+android text="Male" />
+
+<RadioButton
+android:id="@+id/radioButton2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Female"
+/>
+</TableRow>
+
+<TableRow>
+<CheckBox
+android:id="@+id/checkBox"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Music"
+/>
+<CheckBox
+android:id="@+id/checkBox2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Sports"
+/>
+</TableRow>
+
+<ToggleButton
+android:id="@+id/toggleButton"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Ok"
+/>
+</>
+
+4.Grid Layout
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:rowCount="7"
+android:columnCount="2"
+tools:context=".MainActivity">
+
+<TextView
+android:id="@+id/no1"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="NO.1"
+/>
+<EditText
+android:id="@+id/editText"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:hint="enter no 1" />
+<TextView
+android:id="@+id/textView"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="NO2"
+/>
+<EditText
+android:id="@+id/editText2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:hint="enter no 2"
+/>
+<TextView
+android:id="@+id/textView2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="ANS"
+/>
+<EditText
+android:id="@+id/editText3"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:hint="see ans here"
+/>
+<Button
+android:id="@+id/button"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Add"
+/>
+<Button
+android:id="@+id/button2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Sub"
+/>
+<Button
+android:id="@+id/button3"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="mul"
+/>
+<Button
+android:id="@+id/button4"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="div"
+/>
+
+<RadioButton
+android:id="@+id/radioButton"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Male" />
+<RadioButton
+android:id="@+id/radioButton2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Female"
+/>
+<CheckBox
+android:id="@+id/checkBox"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Music"
+/>
+
+<CheckBox
+android:id="@+id/checkBox2"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Sports"
+/>
+<ToggleButton
+android:id="@+id/toggleButton"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Ok"
+/>
+</>
+
+Event Handling:
+Package com.example.uicomponents40;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.*;
+public class MainActivity extends AppCompatActivity {
+EditText e1,e2,e3;
+Button b1,b2,b3,b4;
+RadioButton r1,r2;
+CheckBox c1, c2;
+ToggleButton t1;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+e1=(EditText) findViewById(R.id.editText);
+e2=(EditText)findViewById(R.id.editText2);
+e3=(EditText)findViewById(R.id.editText3);
+b1=(Button) findViewById(R.id.button);
+b2=(Button)findViewById(R.id.button2);
+b3=(Button)findViewById(R.id.button3);
+b4=(Button)findViewById(R.id.button4);
+r1=(RadioButton) findViewById(R.id.radioButton);
+r2=(RadioButton) findViewById(R.id.radioButton2);
+c1=(CheckBox) findViewById(R.id.checkBox);
+c2=(CheckBox) findViewById(R.id.checkBox2);
+t1=(ToggleButton)findViewById(R.id.toggleButton);
+
+b1.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View view) {
+Toast.makeText(getApplicationContext(), "this is add button", Toast.LENGTH_LONG).show();
+}
+});
+
+r1.setOnCheckedChangeListener(new Compound Button.OnCheckedChangeListener() {
+@Override
+public void onCheckedChanged(Compound Button compoundButton, boolean b) {
+Toast.makeText(getApplicationContext(), "Male selected", Toast.LENGTH_LONG).show();
+}
+});
+r2.setOnCheckedChangeListener(new Compound Button. On Checked ChangeListener() {
+@Override
+public void onCheckedChanged(Compound Button compoundButton, boolean b) {
+
+Toast.makeText(getApplicationContext(), "FeMale selected", Toast.LENGTH_LONG).show();
+}
+});
+c1.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View view) {
+Toast.makeText(getApplicationContext(), "this is music
+checkbox",Toast.LENGTH_LONG).show();
+}
+});
+c2.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View view) {
+Toast.makeText(getApplicationContext(), "this is sports
+checkbox",Toast.LENGTH_LONG).show();
+}
+});
+
+b1.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View view) {
+int n1, n2, a;
+n1=Integer.parseInt(e1.getText().toString());
+n2=Integer.parseInt(e2.getText().toString());
+a=n1+n2;
+e3.setText("sum= "+a);
+} 
+});
+b2.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View view) {
+int n1, n2, a;
+n1=Integer.parseInt(e1.getText().toString());
+n2=Integer.parseInt(e2.getText().toString());
+a=n1-n2;
+e3.setText("sub= "+a);
+}
+});
+}
+}
