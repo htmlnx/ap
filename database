@@ -1,0 +1,160 @@
+//MainActivity.java
+package com.example.database_81;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+
+class MyDB extends SQLiteOpenHelper{
+    MyDB(Context e){
+        super(e,"logindb",null,1);
+    }
+    @Override
+    public void onCreate(SQLiteDatabase db){
+       String str="create table login(username text,password text)";
+       db.execSQL(str);
+    }
+    @Override
+    public void onUpgrade(SQLiteDatabase db,int oldVersion,int newVersion){
+      String dr="drop table if exists login";
+      db.execSQL(dr);
+      onCreate(db);
+    }}
+
+
+public class MainActivity extends AppCompatActivity {
+MyDB mdb;
+EditText eusername,epassword;
+Button login,drop,register;
+SQLiteDatabase db;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        eusername=(EditText)findViewById(R.id.username);
+        epassword=(EditText)findViewById(R.id.password);
+        login=(Button) findViewById(R.id.login);
+        drop=(Button) findViewById(R.id.drop);
+        register=(Button) findViewById(R.id.Register);
+        mdb=new MyDB(this);
+    }
+    public void login_fun(View v){
+      String un=String.valueOf(eusername.getText());
+      String pass=String.valueOf(epassword.getText());
+      db=mdb.getReadableDatabase();
+      String q="select * from login where username='"+un+"'and password='"+pass+"'";
+      try{
+          Cursor c=db.rawQuery(q,null);
+          if(c.getCount()==0){
+              Toast.makeText(this, "Username or Password wrong or User doesn't exixts", Toast.LENGTH_LONG).show();
+          }else{
+              while(c.moveToFirst()){
+                  String uname=c.getString(0);
+                  String passw=c.getString(1);
+                  Toast.makeText(this,"Username:"+uname+"\nPassword:"+passw,Toast.LENGTH_LONG).show();
+                  if(un.contentEquals(uname)&&pass.contentEquals(passw)){
+                      Toast.makeText(this,"Welcome user:"+un,Toast.LENGTH_LONG).show();
+                      c.close();
+                  }
+
+              }
+          }
+      }
+      catch (SQLException sqle){
+          sqle.printStackTrace();
+      }
+    }
+    public void register_fun(View v){
+        String un=String.valueOf(eusername.getText());
+        String pass=String.valueOf(epassword.getText());
+        db=mdb.getWritableDatabase();
+        String q="insert into login values('"+un+"','"+pass+"')";
+                db.execSQL(q);
+        Toast.makeText(getApplicationContext(), "User Registered", Toast.LENGTH_SHORT).show();
+    }
+    public void drop_fun(View v)
+    {
+        db=mdb.getWritableDatabase();
+        mdb.onUpgrade(db,1,2);
+        Toast.makeText(this, "All User deleted", Toast.LENGTH_SHORT).show();
+    }
+}
+
+
+
+
+
+//activity_main.xml
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Username" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Enter your Name here" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Password" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Enter your Password here" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="login_fun"
+        android:text="Login" />
+
+    <Button
+        android:id="@+id/drop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="drop_fun"
+        android:text="Drop" />
+
+    <Button
+        android:id="@+id/Register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="register_fun"
+        android:text="Register" />
+
+
+</LinearLayout>
